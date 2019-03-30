@@ -315,7 +315,7 @@ def seal_comparrison_all(*args):
 				print("Your next level is Silver. Your next bonus for {} is at 500 seals and will grant you {} {}, an increase of {}.".format(seals_all[i].Name,seals_all[i].Stats[i][4],seals_all[i].Attribute,bonus))
 				cards_needed = 500 - seal_number
 			elif seal_number == 500:
-				bonus = round((seals_all[i].Stats[i][5] - seals_all[it].Stats[i][4]),2)
+				bonus = round((seals_all[i].Stats[i][5] - seals_all[i].Stats[i][4]),2)
 				print("Your current level is Gold. Your next bonus for {} is at 1000 cards and will grant you {} {}, an increase of {}.".format(seals_all[i].Name,seals_all[i].Stats[i][5],seals_all[i].Attribute,bonus))
 				cards_needed = 500
 			elif seal_number >= 501 and seal_number <= 999:
