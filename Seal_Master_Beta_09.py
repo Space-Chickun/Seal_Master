@@ -227,6 +227,7 @@ def seal_comparrison_single():
 			cards_needed = 3000 - seal_number
 			break
 		elif seal_number == 3000:
+			bonus = seals_all[seal_select].Stats[seal_select][6]
 			print("Your current level is Master. Congratulations, you have fully unlocked {}, granting you {} {}.".format(seals_all[seal_select].Name, seals_all[seal_select].Stats[seal_select][6],seals_all[seal_select].Attribute))
 			cards_needed = 0
 			break
@@ -331,6 +332,7 @@ def seal_comparrison_all(*args):
 				print("Your next level is Platinum. Your next bonus for {} is at 3,000 seals and will grant you {} {}, and increase of {}".format(seals_all[i].Name,seals_all[i].Stats[i][6],seals_all[i].Attribute,bonus))
 				cards_needed = 3000 - seal_number
 			elif seal_number == 3000:
+				bonus = seals_all[i].Stats[i][6]
 				print("Your current level is Master. Congratulations, you have fully unlocked {}, granting you {} {}.".format(seals_all[i].Name, seals_all[i].Stats[i][6],seals_all[i].Attribute))
 				cards_needed = 0	
 			
