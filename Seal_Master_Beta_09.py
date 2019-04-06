@@ -350,6 +350,7 @@ def seal_comparrison_all(*args):
 		
 		elif i > j:
 			print_completed_array()
+			str(input("Press Enter when complete!"))
 			break
 	
 while True:
