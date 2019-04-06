@@ -10,7 +10,12 @@ THIS IS A BETA. PLEASE REPORT ALL BUGS/ISSUES TO '@Lord Nathan Myakis#9391' on t
 Possible future additions:
 
 Ability to set character profiles so you don't have to reenter how many seals you have each time
+
 Ability to remove specific seals from an 'all attribute' comparison
+
 Ability to remember standard seal costs
+
+Seal Exchange Ticket Comparrison
+
 
 You must have Python 3.7 installed to run this properly.
