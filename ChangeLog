@@ -1,0 +1,5 @@
+Beta 0.9
+
+Fixed comparrisons when 200 and 500 are selected as already opened seals.
+
+Fixed program closing as soon as it prints out the comparrison table.
