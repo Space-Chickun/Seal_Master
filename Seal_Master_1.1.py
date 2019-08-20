@@ -15,6 +15,11 @@ class seal():
 		self.Stats = Stats
 		self.Name = Name
 
+#class attribute():
+#	# Attribute list to make choices more compact
+#	def __init__(self, attribute):
+#		self.attribute = attribute
+
 #			Seal				Attribute			Stats								Name
 seals_all = [0,																
 	seal("1. Tanemon",			"Attack",			{1:[0,10,20,40,60,80,100]}, 		"Tanemon"),
@@ -111,16 +116,18 @@ seals_all = [0,
 	seal("92. DexDorugoramon",	"Evade",			{92:[0,.35,.7,1.4,2.1,2.8,3.5]},	"DexDorugoramon")
 	]
 
+#attributes_all = [0,
+#	attribute("Attack"),
+#	attribute("Critical"),
+#	attribute("Hitk"),
+#	attribute("HP"),
+#	attribute("Digisoul"),
+#	attribute("Defense"),
+#	attribute("Block"),
+#	attribute("Evade"),
+#	]
+
 final_comparrison_array = [['Name', 'Cost per Card', 'Cards Needed', 'Total Card Cost', 'Openers Needed', 'Openers Cost', 'Bonus Gained', 'Total Cost', 'Cost per Point']]
-	
-	
-#selection_1 = int(input(
-"""What would you like to do?
-1. Compare all cards of a specific attribute.
-2. Compare specific cards.
-3. Quit
-			\n\n\n
-Choose a number:\t"""#))
 
 while True:
 	selection_1 = int(input(
@@ -146,7 +153,7 @@ Choose a number:\t"""))
 7. Block Rate (BL)
 8. Evade Rate (EV)
 \n\n\n
- Choose a number:\t"""))
+Choose a number:\t"""))
 		break
 
 def print_completed_array():
@@ -168,7 +175,7 @@ def seal_comparrison_single():
 			continue
 		elif s.Attribute == seal_attribute:
 			print(s.Seal)
-		
+				
 	while True:
 		seal_select = int(input("Select a seal to compare:\t"))
 		seal_number = int(input("How many {} seals do you already have open?\t".format(seals_all[seal_select].Name)))
@@ -254,88 +261,62 @@ def seal_comparrison_single():
 	elif should_continue == 'y':
 		seal_comparrison_single()
 	
-def seal_comparrison_all(*args):
-	
-	# print(len(args))
-	
-	if len(args) == 2:
-	
-		x = 0
-		
-		for ar in args:
-			if x == 0:
-				k = ar
-				x += 1
-			elif x == 1:	
-				j = ar
-	
-	p = 0
-	
-	for s in seals_all:
-		if p == 0:
-			p += 1
-			continue
-		elif s.Attribute == seal_attribute:
-			print(s.Seal)
-
-	comparrison_array = []
-	
-	i = k
+def seal_comparrison_all():
 	
 	openers_cost = float(input("What is the cost, in Tera, of Seal Openers on your server?\t"))
 	
-	while True:
-		if i >= k and i <= j:
-			seal_number = int(input("How many {} seals do you already have open?\t".format(seals_all[i].Name)))
-			if seal_number == 0:
-				bonus = round((seals_all[i].Stats[i][1]),2)
-				print("Your current level is unopened. Your next bonus for {} is at 1 card and will grant you {} {} .".format(seals_all[i].Name,seals_all[i].Stats[i][1],seals_all[i].Attribute))
-				cards_needed = 50
-				print("Recommend opening seals in intervals of 50 to get full use out of openers.")
-			elif seal_number == 1:
-				bonus = round((seals_all[i].Stats[i][2] - seals_all[i].Stats[i][1]),2)
-				print("Your current level is Normal. Your next bonus for {} is at 50 cards and will grant you {} {}, an increase of {}.".format(seals_all[i].Name,seals_all[i].Stats[i][2],seals_all[i].Attribute,bonus))
-				cards_needed = 49
-			elif seal_number >= 2 and seal_number <= 49:
-				bonus = round((seals_all[i].Stats[i][2] - seals_all[i].Stats[i][1]),2)
-				print("Your next level is Normal. Your next bonus for {} is at 50 seals and will grant you {} {}, an increase of {}".format(seals_all[i].Name,seals_all[i].Stats[i][2],seals_all[i].Attribute,bonus))
-				cards_needed = 50 - seal_number
-			elif seal_number == 50:
-				bonus = round((seals_all[i].Stats[i][3] - seals_all[i].Stats[i][2]),2)
-				print("Your current level is Bronze. Your next bonus for {} is at 200 cards and will grant you {} {}, an increase of {}.".format(seals_all[i].Name,seals_all[i].Stats[i][3],seals_all[i].Attribute,bonus))
-				cards_needed = 150
-			elif seal_number >= 51 and seal_number <= 199:
-				bonus = round((seals_all[i].Stats[i][3] - seals_all[i].Stats[i][2]),2)
-				print("Your next level is Bronze. Your next bonus for {} is at 200 seals and will grant you {} {}, an increase of {}.".format(seals_all[i].Name,seals_all[i].Stats[i][3],seals_all[i].Attribute,bonus))
-				cards_needed = 200 - seal_number
-			elif seal_number == 200:
-				bonus = round((seals_all[i].Stats[i][4] - seals_all[i].Stats[i][3]),2)
-				print("Your current level is Silver. Your next bonus for {} is at 500 cards and will grant you {} {}, an increase of {}.".format(seals_all[i].Name,seals_all[i].Stats[i][4],seals_all[i].Attribute,bonus))
-				cards_needed = 300
-			elif seal_number >= 201 and seal_number <= 499:
-				bonus = round((seals_all[i].Stats[i][4] - seals_all[i].Stats[i][3]),2)
-				print("Your next level is Silver. Your next bonus for {} is at 500 seals and will grant you {} {}, an increase of {}.".format(seals_all[i].Name,seals_all[i].Stats[i][4],seals_all[i].Attribute,bonus))
-				cards_needed = 500 - seal_number
-			elif seal_number == 500:
-				bonus = round((seals_all[i].Stats[i][5] - seals_all[i].Stats[i][4]),2)
-				print("Your current level is Gold. Your next bonus for {} is at 1000 cards and will grant you {} {}, an increase of {}.".format(seals_all[i].Name,seals_all[i].Stats[i][5],seals_all[i].Attribute,bonus))
-				cards_needed = 500
-			elif seal_number >= 501 and seal_number <= 999:
-				bonus = round((seals_all[i].Stats[i][5] - seals_all[i].Stats[i][4]),2)
-				print("Your next level is Gold. Your next bonus for {} is at 1000 seals and will grant you {} {}, an increase of {}.".format(seals_all[i].Name,seals_all[i].Stats[i][5],seals_all[i].Attribute,bonus))
-				cards_needed = 1000 - seal_number
-			elif seal_number == 1000:
-				bonus = round((seals_all[i].Stats[i][6] - seals_all[i].Stats[i][5]),2)
-				print("Your current level is Platinum. Your final bonus for {} is at 3000 cards and will grant you {} {}, an increase of {}.".format(seals_all[i].Name,seals_all[i].Stats[i][6],seals_all[i].Attribute,bonus))
-				cards_needed = 2000
-			elif seal_number >= 1001 and seal_number <= 2999:
-				bonus = round((seals_all[i].Stats[i][6] - seals_all[i].Stats[i][5]),2)
-				print("Your next level is Platinum. Your next bonus for {} is at 3,000 seals and will grant you {} {}, and increase of {}".format(seals_all[i].Name,seals_all[i].Stats[i][6],seals_all[i].Attribute,bonus))
-				cards_needed = 3000 - seal_number
-			elif seal_number == 3000:
-				bonus = seals_all[i].Stats[i][6]
-				print("Your current level is Master. Congratulations, you have fully unlocked {}, granting you {} {}.".format(seals_all[i].Name, seals_all[i].Stats[i][6],seals_all[i].Attribute))
-				cards_needed = 0	
+	for i in seal_comparison_array:
+		comparrison_array = []
+		seal_number = int(input("How many {} seals do you already have open?\t".format(seals_all[i].Name)))
+		if seal_number == 0:
+			bonus = round((seals_all[i].Stats[i][1]),2)
+			print("Your current level is unopened. Your next bonus for {} is at 1 card and will grant you {} {} .".format(seals_all[i].Name,seals_all[i].Stats[i][1],seals_all[i].Attribute))
+			cards_needed = 50
+			print("Recommend opening seals in intervals of 50 to get full use out of openers.")
+		elif seal_number == 1:
+			bonus = round((seals_all[i].Stats[i][2] - seals_all[i].Stats[i][1]),2)
+			print("Your current level is Normal. Your next bonus for {} is at 50 cards and will grant you {} {}, an increase of {}.".format(seals_all[i].Name,seals_all[i].Stats[i][2],seals_all[i].Attribute,bonus))
+			cards_needed = 49
+		elif seal_number >= 2 and seal_number <= 49:
+			bonus = round((seals_all[i].Stats[i][2] - seals_all[i].Stats[i][1]),2)
+			print("Your next level is Normal. Your next bonus for {} is at 50 seals and will grant you {} {}, an increase of {}".format(seals_all[i].Name,seals_all[i].Stats[i][2],seals_all[i].Attribute,bonus))
+			cards_needed = 50 - seal_number
+		elif seal_number == 50:
+			bonus = round((seals_all[i].Stats[i][3] - seals_all[i].Stats[i][2]),2)
+			print("Your current level is Bronze. Your next bonus for {} is at 200 cards and will grant you {} {}, an increase of {}.".format(seals_all[i].Name,seals_all[i].Stats[i][3],seals_all[i].Attribute,bonus))
+			cards_needed = 150
+		elif seal_number >= 51 and seal_number <= 199:
+			bonus = round((seals_all[i].Stats[i][3] - seals_all[i].Stats[i][2]),2)
+			print("Your next level is Bronze. Your next bonus for {} is at 200 seals and will grant you {} {}, an increase of {}.".format(seals_all[i].Name,seals_all[i].Stats[i][3],seals_all[i].Attribute,bonus))
+			cards_needed = 200 - seal_number
+		elif seal_number == 200:
+			bonus = round((seals_all[i].Stats[i][4] - seals_all[i].Stats[i][3]),2)
+			print("Your current level is Silver. Your next bonus for {} is at 500 cards and will grant you {} {}, an increase of {}.".format(seals_all[i].Name,seals_all[i].Stats[i][4],seals_all[i].Attribute,bonus))
+			cards_needed = 300
+		elif seal_number >= 201 and seal_number <= 499:
+			bonus = round((seals_all[i].Stats[i][4] - seals_all[i].Stats[i][3]),2)
+			print("Your next level is Silver. Your next bonus for {} is at 500 seals and will grant you {} {}, an increase of {}.".format(seals_all[i].Name,seals_all[i].Stats[i][4],seals_all[i].Attribute,bonus))
+			cards_needed = 500 - seal_number
+		elif seal_number == 500:
+			bonus = round((seals_all[i].Stats[i][5] - seals_all[i].Stats[i][4]),2)
+			print("Your current level is Gold. Your next bonus for {} is at 1000 cards and will grant you {} {}, an increase of {}.".format(seals_all[i].Name,seals_all[i].Stats[i][5],seals_all[i].Attribute,bonus))
+			cards_needed = 500
+		elif seal_number >= 501 and seal_number <= 999:
+			bonus = round((seals_all[i].Stats[i][5] - seals_all[i].Stats[i][4]),2)
+			print("Your next level is Gold. Your next bonus for {} is at 1000 seals and will grant you {} {}, an increase of {}.".format(seals_all[i].Name,seals_all[i].Stats[i][5],seals_all[i].Attribute,bonus))
+			cards_needed = 1000 - seal_number
+		elif seal_number == 1000:
+			bonus = round((seals_all[i].Stats[i][6] - seals_all[i].Stats[i][5]),2)
+			print("Your current level is Platinum. Your final bonus for {} is at 3000 cards and will grant you {} {}, an increase of {}.".format(seals_all[i].Name,seals_all[i].Stats[i][6],seals_all[i].Attribute,bonus))
+			cards_needed = 2000
+		elif seal_number >= 1001 and seal_number <= 2999:
+			bonus = round((seals_all[i].Stats[i][6] - seals_all[i].Stats[i][5]),2)
+			print("Your next level is Platinum. Your next bonus for {} is at 3,000 seals and will grant you {} {}, and increase of {}".format(seals_all[i].Name,seals_all[i].Stats[i][6],seals_all[i].Attribute,bonus))
+			cards_needed = 3000 - seal_number
+		elif seal_number == 3000:
+			bonus = seals_all[i].Stats[i][6]
+			print("Your current level is Master. Congratulations, you have fully unlocked {}, granting you {} {}.".format(seals_all[i].Name, seals_all[i].Stats[i][6],seals_all[i].Attribute))
+			cards_needed = 0	
 			
 			comparrison_card_cost = int(input("What is the cost, in Mega, of each {} card on your server?\t".format(seals_all[i].Name)))
 			card_cost = cards_needed * comparrison_card_cost
@@ -349,60 +330,38 @@ def seal_comparrison_all(*args):
 			comparrison_array = []
 			i += 1
 		
-		elif i > j:
-			print_completed_array()
-			str(input("Press Enter when complete!"))
-			break
+#		elif i > j:
+#			print_completed_array()
+#			str(input("Press Enter when complete!"))
+#			break
 	
 while True:
+	seals_select = seals_all['Seal' 'Attribute' 'Stats' 'Name']
+	seal_comparison_array = []
 	if selection_1 == 1:
 		if selection_2 == 1:
 			seal_attribute = "Attack"
-			i = 1
-			t = 15
-			seal_comparrison_all(i,t)
 			break
 		elif selection_2 == 2:
 			seal_attribute = "Critical"
-			i = 16
-			t = 23
-			seal_comparrison_all(i,t)
 			break
 		elif selection_2 == 3:
 			seal_attribute = "Hit"
-			i = 24
-			t = 35
-			seal_comparrison_all(i,t)
 			break
 		elif selection_2 == 4:
 			seal_attribute = "HP"
-			i = 36
-			t = 49
-			seal_comparrison_all(i,t)
 			break
 		elif selection_2 == 5:
 			seal_attribute = "Digisoul"
-			i = 50
-			t = 61
-			seal_comparrison_all(i,t)
 			break
 		elif selection_2 == 6:
 			seal_attribute = "Defense"
-			i = 62
-			t = 74
-			seal_comparrison_all(i,t)
 			break
 		elif selection_2 == 7:
 			seal_attribute = "Block"
-			i = 75
-			t = 81
-			seal_comparrison_all(i,t)
 			break
 		elif selection_2 == 8:
 			seal_attribute = "Evade"
-			i = 82
-			t = 92
-			seal_comparrison_all(i,t)
 			break
 		elif selection_2 >= 9:
 			print("Invalid Entry")
@@ -443,5 +402,9 @@ while True:
 		elif selection_2 >= 9:
 			print("Invalid Entry")
 			break
+	for Attribute in seals_select[self.Seal, self.Attribute, self.Stats, self.Name]:
+		if seal_attribute == self.Attribute:
+			seal_comparison_array.append(seals_all.Seal)
+			print(seal_comparison_array)
 		
 seals_to_be_compared = []
