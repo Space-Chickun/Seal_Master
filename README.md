@@ -18,4 +18,7 @@ Ability to remember standard seal costs
 Seal Exchange Ticket Comparrison
 
 
+INSTRUCTIONS:
+
 You must have Python 3.7 installed to run this properly.
+In command prompt, run "Python3.7 <location of seal_master.py>
